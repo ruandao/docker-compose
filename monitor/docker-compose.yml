@@ -1,0 +1,65 @@
+version: "3"
+services:
+  prometheus:
+    image: prom/prometheus:v2.4.2
+    volumes:
+      - /root/docker/monitor/prometheus/data:/prometheus/
+      - /root/docker/monitor/conf/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    deploy:
+#      placement:
+#        constraints: [node.role == manager]
+
+  node-exporter:
+    image: quay.io/prometheus/node-exporter:v0.16.0
+    deploy:
+      replicas: 1
+#      placement:
+#        constraints: [node.role == manager]
+
+  redis-ser:
+    image: oliver006/redis_exporter:v0.21.2
+    environment:
+      # 内网IP
+      - REDIS_ADDR=$(redis_ser_host)
+      - REDIS_PASSWORD=$(redis_ser_pwd)
+    ports:
+      - "9121:9121"
+    deploy:
+      replicas: 1
+#      placement:
+#        constraints: [node.role == manager]
+  redis-test:
+    image: oliver006/redis_exporter:v0.21.2
+    environment:
+      # 内网IP
+      - REDIS_ADDR=$(redis_test_host)
+      - REDIS_PASSWORD=$(redis_test_pwd)
+    ports:
+      - "9122:9121"
+    deploy:
+      replicas: 1
+#      placement:
+#        constraints: [node.role == manager]
+
+  grafana:
+    image: grafana/grafana:5.3.2
+    ports:
+      - "3000:3000"
+    volumes:
+      - /root/docker/monitor/grafana/data:/var/lib/grafana
+      - /root/docker/monitor/grafana/logs:/var/log/grafana
+    deploy:
+      resources:
+        limits:
+          cpus: '0.1'
+          memory: 300M
+      replicas: 1
+#      placement:
+#        constraints: [node.role == manager]
+
+  zipkin:
+    image: openzipkin/zipkin:2
+    ports:
+      - "8890:9411"
