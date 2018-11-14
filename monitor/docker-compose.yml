@@ -22,8 +22,8 @@ services:
     image: oliver006/redis_exporter:v0.21.2
     environment:
       # 内网IP
-      - REDIS_ADDR=$(redis_ser_host)
-      - REDIS_PASSWORD=$(redis_ser_pwd)
+      - REDIS_ADDR=${redis_ser_host}
+      - REDIS_PASSWORD=${redis_ser_pwd}
     ports:
       - "9121:9121"
     deploy:
@@ -34,8 +34,8 @@ services:
     image: oliver006/redis_exporter:v0.21.2
     environment:
       # 内网IP
-      - REDIS_ADDR=$(redis_test_host)
-      - REDIS_PASSWORD=$(redis_test_pwd)
+      - REDIS_ADDR=${redis_test_host}
+      - REDIS_PASSWORD=${redis_test_pwd}
     ports:
       - "9122:9121"
     deploy:
