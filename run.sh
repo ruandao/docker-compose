@@ -5,6 +5,7 @@ eval $(docker-machine env censusvm)
 # 3000: grafana
 # 9121: redis-exporter
 # 9090: prometheus
+. ~/.bash_profile
 docker stack deploy -c monitor/docker-compose.yml monitor
 
 # 8880: sonarQube
