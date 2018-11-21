@@ -61,6 +61,8 @@ services:
 
   mysql:
     image: openzipkin/zipkin-mysql
+    ports:
+      - "3306:3306"
 
   # https://github.com/openzipkin/docker-zipkin/blob/master/docker-compose.yml
   zipkin:
