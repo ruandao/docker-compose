@@ -64,6 +64,13 @@ services:
     ports:
       - "3306:3306"
 
+  mysql-prom:
+    image: prom/mysqld-exporter
+    environment:
+      - DATA_SOURCE_NAME=zipkin:zipkin@mysql
+    ports:
+      - "9104:9104"
+
   # https://github.com/openzipkin/docker-zipkin/blob/master/docker-compose.yml
   zipkin:
     image: openzipkin/zipkin:2
