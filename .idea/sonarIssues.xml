@@ -68,6 +68,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../docker-sonarqube/Dockerfile">
+          <value>
+            <set />
+          </value>
+        </entry>
       </map>
     </option>
   </component>
