@@ -1,0 +1,29 @@
+version: "3"
+services:
+  sonarqube:
+    image: ruandao/docker-sonarqube
+    environment:
+      - SONARQUBE_JDBC_USERNAME=sonar
+      - SONARQUBE_JDBC_PASSWORD=v07IGCFCF83Z95NX
+      - SONARQUBE_JDBC_URL=jdbc:postgresql://db:5432/sonarqube
+    ports:
+      - "9000:9000"
+      - "9092:9092"
+    volumes:
+      - /root/ljy/sonarqube/conf:/opt/sonarqube/conf
+      - /root/ljy/sonarqube/data:/opt/sonarqube/data
+      - /root/ljy/sonarqube/extensions:/opt/sonarqube/extensions
+      - /root/ljy/sonarqube/plugins:/opt/sonarqube/lib/bundled-plugins
+
+  db:
+    image: postgres:10.1
+    environment:
+      - POSTGRES_USER=sonar
+      - POSTGRES_PASSWORD=v07IGCFCF83Z95NX
+      - POSTGRES_DB=sonarqube
+    volumes:
+      - /root/ljy/postgresql/db:/var/lib/postgresql
+      # This needs explicit mapping due to https://github.com/docker-library/postgres/blob/4e48e3228a30763913ece952c611e5e9b95c8759/Dockerfile.template#L52
+      - /root/ljy/postgresql/data:/var/lib/postgresql/data
+
+
