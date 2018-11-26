@@ -7,7 +7,7 @@ services:
       - SONARQUBE_JDBC_PASSWORD=v07IGCFCF83Z95NX
       - SONARQUBE_JDBC_URL=jdbc:postgresql://db:5432/sonarqube
     ports:
-      - "9000:9000"
+      - "8888:9000"
       - "9092:9092"
     volumes:
       - /root/ljy/sonarqube/conf:/opt/sonarqube/conf
