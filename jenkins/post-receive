@@ -1,0 +1,18 @@
+#!/bin/bash
+
+projectName=mbx
+USER=admin
+API_TOKEN=119f3847c73e9508d8667dd69ac7f47329
+while read oldrev newrev refname
+do
+        echo "oldrev:" $oldrev
+        echo "newrev:" $newrev
+        echo "refname:" $refname
+        branch=$(git rev-parse --symbolic --abbrev-ref $refname)
+        echo "creae branch $branch job"
+        curl -X POST http://localhost:8080/job/$projectName/job/$branch/build?delay=0sec --user $USER:$API_TOKEN
+done
+
+echo "sleep 5s"
+sleep 5
+echo "done"
