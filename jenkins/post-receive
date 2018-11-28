@@ -1,5 +1,6 @@
 #!/bin/bash
 
+hostUrl=http://censusvm:8080
 projectName=mbx
 USER=admin
 API_TOKEN=119f3847c73e9508d8667dd69ac7f47329
@@ -10,7 +11,8 @@ do
         echo "refname:" $refname
         branch=$(git rev-parse --symbolic --abbrev-ref $refname)
         echo "creae branch $branch job"
-        curl -X POST http://localhost:8080/job/$projectName/job/$branch/build?delay=0sec --user $USER:$API_TOKEN
+        curl -X POST $hostUrl/job/$projectName/job/$branch/build?delay=0sec --user $USER:$API_TOKEN
+
 done
 
 echo "sleep 5s"

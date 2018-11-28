@@ -8,6 +8,7 @@
 
     生成后，记得保存下来
 
+4. 将 post-receive 放到指定仓库的 hooks/ 目录中，
 
 4. 提交到仓库后，自动构建, 这个需要用到 git hook：
 
@@ -16,3 +17,12 @@
     curl -X POST http://localhost:8080/job/$projectName/job/$branchName/build?delay=0sec --user USER:API_TOKEN
 
     (上面这个URL， 可以通过观察 Jenkins 里面具体任务的 Build Now 按钮)
+
+
+
+下面这些变量是 post-receive 中会用到的，需要手动修改的
+
+    hostUrl=http://censusvm:8080
+    projectName=mbx
+    USER=admin
+    API_TOKEN=119f3847c73e9508d8667dd69ac7f47329
