@@ -41,3 +41,21 @@
 
 注意，小心 Jenkinsfile 里面的容器的端口与已经使用的端口的冲突
 然后 最好 Jenkins 不要并发进行build， 否则会出现 Jenkinsfile 里面的端口冲突
+
+和 sonarqube 结合：
+
+
+        stage("analysis") {
+            agent {
+                docker {
+                    image 'emeraldsquad/sonar-scanner:latest'
+                }
+            }
+            steps {
+                sonar-scanner \
+                        -Dsonar.projectKey=fish \
+                        -Dsonar.sources=. \
+                        -Dsonar.host.url=http://census:8888 \
+                        -Dsonar.login=71e05dcefbdfc0ef7b5b1da69ed89235a0d05978
+            }
+        }

@@ -14,6 +14,10 @@ services:
       - /root/ljy/sonarqube/data:/opt/sonarqube/data
       - /root/ljy/sonarqube/extensions:/opt/sonarqube/extensions
       - /root/ljy/sonarqube/plugins:/opt/sonarqube/lib/bundled-plugins
+    depends_on:
+      - db
+    deploy:
+      replicas: 1
 
   db:
     image: postgres:10.1
@@ -25,5 +29,7 @@ services:
       - /root/ljy/postgresql/db:/var/lib/postgresql
       # This needs explicit mapping due to https://github.com/docker-library/postgres/blob/4e48e3228a30763913ece952c611e5e9b95c8759/Dockerfile.template#L52
       - /root/ljy/postgresql/data:/var/lib/postgresql/data
+    deploy:
+      replicas: 1
 
 

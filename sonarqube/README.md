@@ -34,3 +34,13 @@ sonarqube 的默认用户名密码
     然后失败后,去看容器里面的日志链接,
     手动下载链接的jar包, 放置到 extensions/plugins/ 里面
 
+
+
+提交代码进行检查：
+
+
+    sonar-scanner \
+        -Dsonar.projectKey=fish \
+        -Dsonar.sources=. \
+        -Dsonar.host.url=http://census:8888 \
+        -Dsonar.login=71e05dcefbdfc0ef7b5b1da69ed89235a0d05978

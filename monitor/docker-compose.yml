@@ -8,6 +8,7 @@ services:
     ports:
       - "9090:9090"
     deploy:
+      replicas: 1
 #      placement:
 #        constraints: [node.role == manager]
 
@@ -59,17 +60,21 @@ services:
 #      placement:
 #        constraints: [node.role == manager]
 
-  mysql:
-    image: openzipkin/zipkin-mysql
-    ports:
-      - "3306:3306"
-
   mysql-prom:
     image: prom/mysqld-exporter
     environment:
       - DATA_SOURCE_NAME=zipkin:zipkin@mysql
     ports:
       - "9104:9104"
+    deploy:
+      replicas: 1
+
+  mysql:
+    image: openzipkin/zipkin-mysql
+    ports:
+      - "3306:3306"
+    deploy:
+      replicas: 1
 
   # https://github.com/openzipkin/docker-zipkin/blob/master/docker-compose.yml
   zipkin:
@@ -81,3 +86,5 @@ services:
       - MYSQL_HOST=mysql
     depends_on:
       - mysql
+    deploy:
+      replicas: 1

@@ -6,7 +6,7 @@ eval $(docker-machine env censusvm)
 # 9121: redis-exporter
 # 9090: prometheus
 . ~/.bash_profile # for what ?
-docker stack deploy -c monitor/docker-compose.yml monitor
+docker stack deploy -c docker-compose.yml monitor
 
 # 8880: sonarQube
 #docker stack deploy -c codeReview/docker-compose.yml codeReview
