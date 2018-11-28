@@ -26,3 +26,18 @@
     projectName=mbx
     USER=admin
     API_TOKEN=119f3847c73e9508d8667dd69ac7f47329
+
+
+设置过程中遇到的问题：
+
+    1.Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: 。。。
+    解决办法：
+        这个问题，应该是宿主的 docker.sock 映射到容器里面的时候， 容器无法正常与之通讯
+        不考虑安全，直接  chmod a+rwx /var/run/docker.sock
+
+    2."docker-proxy": executable file not found in $PATH.
+    解决办法：
+        ln -s /usr/libexec/docker/docker-proxy-current /usr/bin/docker-proxy
+
+注意，小心 Jenkinsfile 里面的容器的端口与已经使用的端口的冲突
+然后 最好 Jenkins 不要并发进行build， 否则会出现 Jenkinsfile 里面的端口冲突
