@@ -1,7 +1,7 @@
 version: "3"
 services:
   prometheus:
-    image: prom/prometheus:v2.4.2
+    image: prom/prometheus:v2.6.0
     volumes:
       - /root/docker/monitor/prometheus/data:/prometheus/
       - /root/docker/monitor/conf/prometheus.yml:/etc/prometheus/prometheus.yml
