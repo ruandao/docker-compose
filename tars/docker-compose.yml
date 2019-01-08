@@ -1,0 +1,26 @@
+version: "3"
+services:
+  mysql:
+      image: mysql:5.6
+      ports:
+        - "3306:3306"
+      volumes:
+        - /Users/ljy/docker_data/ljy/tars/mysql/data:/var/lib/mysql
+      environment:
+        - MYSQL_ROOT_PASSWORD=password
+        - TZ=Asia/Shanghai
+      deploy:
+        replicas: 1
+
+  tars:
+    image: tarscloud/tars:dev
+    ports:
+      - "6080:80"
+      - "6000:3000"
+    environment:
+      - DBIP=mysql
+      - DBPort=3306
+      - DBUser=root
+      - DBPassword=password
+    depends_on:
+      - mysql
