@@ -2,4 +2,5 @@
 
 eval $(docker-machine env censusvm)
 
-docker stack deploy -c docker-compose.yml codeReview
+#docker stack deploy -c docker-compose.yml codeReview
+docker stack rm codeReview

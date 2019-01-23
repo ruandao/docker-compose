@@ -23,7 +23,7 @@ services:
 #    environment:
 #      - STORAGE_TYPE=mysql
 #      - MYSQL_HOST=mysql
-    depends_on:
-      - mysql
+#    depends_on:
+#      - mysql
     deploy:
       replicas: 1
