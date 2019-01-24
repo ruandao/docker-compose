@@ -33,3 +33,6 @@ buildV=$now
 tagName="build_$buildV"
 git tag $tagName
 git push
+
+# 删除非 release 开头的 tag
+git tag --points-at HEAD|grep -v "release" |xargs -I {} git tag -d {}
