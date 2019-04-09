@@ -1,5 +1,5 @@
 
-#1 开启代理通道
+#1 开启代理通道#
 
 将 `google` 和 `kgoogle` 放置到 `/Users/ljy/bin/` 目录中
 然后运行 `crontab -e` 输入以下内容
