@@ -43,3 +43,10 @@ ok 然后 浏览器会自动走 代理
     # ssh跳板的方式
     #ProxyCommand ssh -q somanyad nc %h %p
     
+
+将 `google` 和 `kgoogle` 放置到 `/Users/ljy/bin/` 目录中
+然后运行 `crontab -e` 输入以下内容
+
+     */2 * * * * /Users/ljy/bin/google >> /Users/ljy/bin/crontab.google.log
+     
+           
