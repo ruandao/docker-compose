@@ -1,0 +1,4 @@
+#!/bin/sh
+
+ps -ef | grep 1234 | grep ssh | grep -v grep|awk '{print $2}'|xargs -I {}  kill {}
+ps -ef | grep 1235 | grep ssh | grep -v grep|awk '{print $2}'|xargs -I {}  kill {}
