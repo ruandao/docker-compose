@@ -1,5 +1,5 @@
 
-#1 开启代理通道#
+## 1 开启代理通道
 
 将 `google` 和 `kgoogle` 放置到 `/Users/ljy/bin/` 目录中
 然后运行 `crontab -e` 输入以下内容
@@ -7,7 +7,7 @@
      */2 * * * * /Users/ljy/bin/google >> /Users/ljy/bin/crontab.google.log
      
 
-#2 配置自动代理
+## 2 配置自动代理
 
 [下载 并运行 docker](https://www.docker.com/products/docker-desktop)
 然后 
@@ -24,7 +24,7 @@
 ok 然后 浏览器会自动走 代理
 
 
-#3 配置 git 的代理
+## 3 配置 git 的代理
     
 设置 git 走代理
 
@@ -47,7 +47,7 @@ ok 然后 浏览器会自动走 代理
 
 
 
-#4 处理命令行代理
+## 4 处理命令行代理
 
 命令行需要
     
