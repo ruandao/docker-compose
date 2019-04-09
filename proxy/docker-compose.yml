@@ -1,0 +1,10 @@
+version: "3"
+services:
+  prometheus:
+    image: benhutchins/static
+    ports:
+      - "8888:80"
+    volumes:
+      - /Users/ljy/www/:/static/
+    deploy:
+      replicas: 1
