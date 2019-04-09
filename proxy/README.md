@@ -10,11 +10,7 @@
 ## 2 配置自动代理
 
 [下载 并运行 docker](https://www.docker.com/products/docker-desktop)
-然后 
-
-    docker swarm init
-    
-接着运行 本目录里面的 `run.sh` 脚本
+然后运行 本目录里面的 `run.sh` 脚本
 
 在 /Users/ljy/www 里面放置 proxy.pac
 
