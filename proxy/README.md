@@ -3,6 +3,8 @@
 
     docker swarm init
     
+接着运行 本目录里面的 `run.sh` 脚本
+
 在 /Users/ljy/www 里面放置 proxy.pac
 
 然后 在 mac 的网络上配置 自动代理（就是前两个选项）  
