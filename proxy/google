@@ -2,10 +2,10 @@
 
 pids=`ps -ef | grep 1234 | grep ssh | grep -v grep|awk '{print $2}'`
 if [ -z "$pids" ];then
-	ssh -fNCD 1234 aws
+	ssh -CqTfnN -D 1234 aws
 fi
 
 pids=`ps -ef | grep 1235 | grep ssh | grep -v grep|awk '{print $2}'`
 if [ -z "$pids" ];then
-	ssh -fNCD 1235 somanyad
+	ssh -CqTfnN -D 1235 somanyad
 fi
