@@ -2,10 +2,11 @@
 
 pids=`ps -ef | grep 1234 | grep ssh | grep -v grep|awk '{print $2}'`
 if [ -z "$pids" ];then
-	ssh -CqTfnN -D 1234 aws
+	# 会同时占用 9090 和 9091 端口
+	autossh -M 9090 -CqTfnN -D 1234 aws
 fi
 
 pids=`ps -ef | grep 1235 | grep ssh | grep -v grep|awk '{print $2}'`
 if [ -z "$pids" ];then
-	ssh -CqTfnN -D 1235 somanyad
+	autossh -M 9092 -CqTfnN -D 1235 somanyad
 fi
