@@ -24,6 +24,7 @@ start() {
 
     # 国内流量直接放行
     for ip in `cat /etc/chinadns_chnroute.txt`;do
+        echo "process $ip"
         iptables -t nat -A chinadnsproxy -d $ip -j RETURN;
     done
     # 剩下的转发到代理端口
