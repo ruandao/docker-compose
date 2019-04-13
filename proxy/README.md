@@ -1,11 +1,9 @@
 
 ## 1 开启代理通道
+安装 autossh 
 
-将 `google` 和 `kgoogle` 放置到 `/Users/ljy/bin/` 目录中
-然后运行 `crontab -e` 输入以下内容
-
-     */2 * * * * /Users/ljy/bin/google >> /Users/ljy/bin/crontab.google.log
-     
+    brew install autossh
+将 `google` 和 `kgoogle` 放到 bin 目录,(记得，将 bin 目录加入PATH： `export PATH=$PATH:~/bin`)， 然后 运行 `google`  
 
 ## 2 配置自动代理
 
