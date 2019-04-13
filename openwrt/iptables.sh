@@ -26,6 +26,7 @@ start() {
     for ip in `cat /etc/chinadns_chnroute.txt`;do
         echo "process $ip"
         iptables -t nat -A chinadnsproxy -d $ip -j RETURN;
+        : # 空命令，用于注视上面两行的时候，作为占位符用的
     done
     # 剩下的转发到代理端口
     iptables -t nat -A chinadnsproxy -p tcp -j REDIRECT --to-ports 1234;
