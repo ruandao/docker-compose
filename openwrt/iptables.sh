@@ -27,7 +27,7 @@ start() {
         iptables -t nat -A chinadnsproxy -d $ip -j RETURN;
     done
     # 剩下的转发到代理端口
-    iptables -t nat -A chinadnsproxy -p tcp -j REDIRECT --to-ports 1235;
+    iptables -t nat -A chinadnsproxy -p tcp -j REDIRECT --to-ports 1234;
 }
 
 stop() {
