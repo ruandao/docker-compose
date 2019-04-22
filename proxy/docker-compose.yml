@@ -5,6 +5,6 @@ services:
     ports:
       - "8888:80"
     volumes:
-      - /Users/ljy/www/:/static/
+      - /Users/weixin/www/:/static/
     deploy:
       replicas: 1
