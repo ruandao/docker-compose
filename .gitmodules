@@ -1,0 +1,9 @@
+[submodule "browser/chrome-centos"]
+	path = browser/chrome-centos
+	url = https://github.com/ruandao/chrome-centos
+[submodule "browser/chrome-ubuntu"]
+	path = browser/chrome-ubuntu
+	url = https://github.com/ruandao/chrome-ubuntu
+[submodule "browser/chrome-window64"]
+	path = browser/chrome-window64
+	url = https://github.com/ruandao/chrome-window64
