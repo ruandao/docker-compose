@@ -1,0 +1,6 @@
+#!/bin/sh
+fname=`basename $1`
+if [ "$2" -ne "" ];then
+	fname=$2
+fi
+ssh somanyad wget $1 -O - > $fname
