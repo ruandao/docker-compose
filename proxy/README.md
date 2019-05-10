@@ -1,4 +1,8 @@
 
+[如果有openwrt 路由器的化](https://www.evernote.com/l/AEdmy9YZQ0hMjpFuNB7ablQjavg82MqwVyE)
+
+
+
 ## 1 开启代理通道
 安装 autossh 
 
