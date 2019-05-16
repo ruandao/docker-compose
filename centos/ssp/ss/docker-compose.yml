@@ -1,0 +1,15 @@
+version: "3"
+services:
+  ss:
+    image: shadowsocks/shadowsocks-libev
+    ports:
+      - "8988:8388"
+      - "8988:8388/udp"
+    environment:
+      - PASSWORD=mypassword-dont-modify
+      - METHOD=aes-256-cfb
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+        delay: 5s
