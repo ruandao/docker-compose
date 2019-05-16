@@ -1,12 +1,12 @@
 #!/bin/sh
 
-if [ $# -lt 1 ];then
-    echo "docker machine 服务器名"
-    echo "usage: $0 serverName"
+if [ $# -lt 2 ];then
+    echo "usage: $0 serverName my_ss_password"
     exit
 fi
 
-machineName=$1
+export machineName=$1
+export my_ss_password=$2
 
 eval $(docker-machine env $machineName)
 docker swarm init 

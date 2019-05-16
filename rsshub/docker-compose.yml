@@ -1,6 +1,8 @@
 version: "3"
 services:
-  prometheus:
+  rsshub:
     image: diygod/rsshub
+    ports:
+      - "1200:1200"
     deploy:
       replicas: 1

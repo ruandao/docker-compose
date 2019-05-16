@@ -6,7 +6,7 @@ services:
       - "8988:8388"
       - "8988:8388/udp"
     environment:
-      - PASSWORD=mypassword-dont-modify
+      - PASSWORD=${my_ss_password}
     deploy:
       replicas: 1
       restart_policy:
