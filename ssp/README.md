@@ -7,10 +7,10 @@
 
 # 接着需要创建 docker-machine 
 
-    docker-machine create --driver generic --generic-ip-address=serverIp --generic-ssh-key ~/.ssh/id_rsa vm
+    docker-machine create --driver generic --generic-ip-address=$serverIp --generic-ssh-key ~/.ssh/$id_rsa $serverName
 
 # 然后运行 run.sh 脚本
 
-    ./run.sh serverName my_ss_password
+    ./run.sh $serverName $my_ss_password
 
 
