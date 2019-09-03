@@ -10,4 +10,4 @@ export my_ss_password=$2
 
 eval $(docker-machine env $machineName)
 docker swarm init 
-docker stack deploy -c docker-compose.yml rsshub
+docker stack deploy -c docker-compose.yml proxy
