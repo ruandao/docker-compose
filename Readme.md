@@ -15,10 +15,15 @@
 
 
 
+连接/创建 远程`docker`环境
 // docker-machine init
 
     docker-machine create --driver generic --generic-ip-address=xxxx --generic-ssh-key ~/.ssh/id_rsa $(vmname)
 
+初始化本地`docker`环境
+
+     "docker swarm init" or "docker swarm join"
+     
 
 使用方法
 
