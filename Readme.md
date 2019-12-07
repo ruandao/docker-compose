@@ -24,6 +24,7 @@
 
      "docker swarm init" or "docker swarm join"
      
+更多 docker 命令，请进入docker目录中阅读
 
 使用方法
 
