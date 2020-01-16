@@ -20,6 +20,10 @@
 
     docker-machine create --driver generic --generic-ip-address=xxxx --generic-ssh-key ~/.ssh/id_rsa $(vmname)
 
+创建本地默认 docker 环境
+
+    docker-machine create --driver virtualbox default
+
 初始化本地`docker`环境
 
      "docker swarm init" or "docker swarm join"
