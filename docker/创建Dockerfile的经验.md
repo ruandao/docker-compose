@@ -1,3 +1,41 @@
+---
+# 1.使用多阶段容器
+采用类似如下的方案
+
+    FROM golang:alpine as builder
+    
+    RUN apk update && apk upgrade && \
+        apk add --no-cache git
+    
+    RUN mkdir /app
+    WORKDIR /app
+    
+    ENV GO111MODULE=on
+    
+    COPY . .
+    
+    RUN go mod download
+    RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o shippy-service-consignment
+    
+    # Run container
+    FROM alpine:latest
+    
+    RUN apk --no-cache add ca-certificates
+    
+    RUN mkdir /app
+    WORKDIR /app
+    COPY --from=builder /app/shippy-service-consignment .
+    
+    CMD ["./shippy-service-consignment"]
+    
+前面的 `FROM xxx` 用来创建一个编译二进制文件的环境 
+后面 `FROM alpine:latest` 目的是让镜像尽可能小   
+然后把编译的二进制文件放到轻量镜像中， 这样上传之类的都可以使用轻量镜像
+
+
+--- 
+# 2.尽可能让每个阶段可以缓存
+
 
 使用 `apt-get install xxx` 时尽可能的锁定版本，并且将 `apt-get update` 放在同一行，如下例子
     
