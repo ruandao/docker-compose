@@ -1,0 +1,14 @@
+version: "3"
+services:
+  ss:
+    image: nginx
+    ports:
+      - "3000:80"
+    volumes:
+      - /pathTo/nginx/www:/usr/share/nginx/html
+      - /pathTo/nginx/conf.d:/etc/nginx/conf.d
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+        delay: 5s
