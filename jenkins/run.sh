@@ -2,6 +2,6 @@
 
 . ~/.bashrc
 
-eval $(docker-machine env censusvm)
+eval $(docker-machine env sm-desktop)
 
 docker stack deploy -c docker-compose.yml jenkins

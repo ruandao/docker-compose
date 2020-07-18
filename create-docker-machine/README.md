@@ -3,6 +3,9 @@
 
 
     sudo usermod -aG wheel `whoami`
+    sudo usermod -aG sudo `whoami`
+    
+
 
 创建 远程  docker-machine
 
