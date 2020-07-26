@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>homebrew.mxcl.jenkins-lts</string>
+    <key>ProgramArguments</key>
+    <array>
+      <string>/usr/local/opt/openjdk@11/bin/java</string>
+      <string>-Dmail.smtp.starttls.enable=true</string>
+      <string>-jar</string>
+      <string>/usr/local/opt/jenkins-lts/libexec/jenkins.war</string>
+      <string>--httpListenAddress=127.0.0.1</string>
+      <string>--httpPort=8080</string>
+    </array>
+    <key>RunAtLoad</key>
+    <true/>
+	<key>EnvironmentVariables</key>
+	<dict>
+		<key>PATH</key>
+		<string>/Users/y/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/Users/y/Library/Android/sdk/tools:/Users/y/Library/Android/sdk/platform-tools</string>
+		<key>LANG</key>
+		<string>zh_CN.UTF-8</string>
+		<key>LC_COLLATE</key>
+		<string>zh_CN.UTF-8</string>
+		<key>LC_CTYPE</key>
+		<string>zh_CN.UTF-8</string>
+        <key>LC_MESSAGES</key>
+        <string>zh_CN.UTF-8</string>
+        <key>LC_MONETARY</key>
+        <string>zh_CN.UTF-8</string>
+        <key>LC_NUMERIC</key>
+        <string>zh_CN.UTF-8</string>
+        <key>LC_TIME</key>
+        <string>zh_CN.UTF-8</string>
+	</dict>
+  </dict>
+</plist>
