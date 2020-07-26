@@ -7,3 +7,4 @@
 范例可以参见  [./homebrew.mxcl.jenkins-lts.plist](./homebrew.mxcl.jenkins-lts.plist)
 里面的 `EnvironmentVariables`>`PATH`
 另一个就是 utf-8 , 依旧是上面这个范例然后 `EnvironmentVariables`> `xxx`:`UTF-8` 里面的各种 utf-8
+
