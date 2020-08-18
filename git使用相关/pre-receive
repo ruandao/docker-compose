@@ -1,0 +1,78 @@
+#!/bin/sh
+#
+# An example hook script to make use of push options.
+# The example simply echoes all push options that start with 'echoback='
+# and rejects all pushes when the "reject" push option is used.
+#
+# To enable this hook, rename this file to "pre-receive".
+
+# unset git_dir and quarantine for specific command
+SAFE_GITENV="env -u GIT_DIR -u GIT_QUARANTINE_PATH"
+
+while read oldrev newrev refname; do
+    # extract the name of branch or tag
+    branch=$(echo "$refname" |cut -d '/' -f 3)
+
+    # create empty dir
+    tmptree=$(mktemp -d)
+
+    # current git dir
+    git_dir_source=$(pwd)
+
+    # extract content from the new revision
+    git archive $newrev | tar x -C ${tmptree}
+
+    # get out from source dir
+    cd $tmptree
+
+
+    # now we could use SAFE_GITENV
+
+    # create tree in the archive
+    $SAFE_GITENV git clone --bare $git_dir_source .git >/dev/null 2>&1
+
+    # disable garbage
+    $SAFE_GITENV git config --local gc.auto 0
+
+    # disable bare
+    $SAFE_GITENV git config --local --bool core.bare false
+
+    # set current branch
+    $SAFE_GITENV git symbolic-ref HEAD refs/heads/$branch
+
+    # reset index with new revision
+    $SAFE_GITENV git reset $newrev -- .
+
+
+
+    echo "当前位置`pwd`"
+    echo "下面做单元检测"
+    echo "加载子模块..."
+    $SAFE_GITENV git submodule update --init --recursive
+
+    echo "处理依赖"
+    ln -s ~/node_modules .
+    yarn
+    echo "prepare"
+    yarn prepare
+    echo "typescript 类型检测"
+    yarn type-check
+    rc=$?
+    if [[ $rc!=0 ]]; then
+      echo "yarn type-check fail, 请遵守类型规范"
+      exit 1
+    fi
+
+    echo "编译代码"
+    yarn build
+    rc=$?
+    if [[ $rc!=0 ]];then
+      echo "yarn build fail, 编译失败"
+      exit 1
+    fi
+
+
+    # ...
+done
+
+exit 1
