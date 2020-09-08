@@ -1,0 +1,11 @@
+#!/bin/bash
+
+hostUrl=http://localhost:8080
+projectName=[jenkins 项目名称]
+USER=admin
+API_TOKEN=[jenkins 后台取得]
+curl -X POST $hostUrl/job/$projectName/build?token=[jenkins 项目的相关配置] --user $USER:$API_TOKEN
+
+echo "sleep 5s"
+sleep 5
+echo "done"
