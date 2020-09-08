@@ -10,7 +10,7 @@
       <string>-Dmail.smtp.starttls.enable=true</string>
       <string>-jar</string>
       <string>/usr/local/opt/jenkins-lts/libexec/jenkins.war</string>
-      <string>--httpListenAddress=127.0.0.1</string>
+      <string>--httpListenAddress=0.0.0.0</string>
       <string>--httpPort=8080</string>
     </array>
     <key>RunAtLoad</key>
@@ -33,6 +33,14 @@
         <string>zh_CN.UTF-8</string>
         <key>LC_TIME</key>
         <string>zh_CN.UTF-8</string>
+	<key>FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD</key>
+	<string>[*****]</string>
+	<key>JAVA_HOME</key>
+	<string>/Library/Java/JavaVirtualMachines/jdk1.8.0_261.jdk/Contents/Home</string>
+	<key>appleId</key>
+	<string>ljy080829@gmail.com</string>
+	<key>FASTLANE_SESSION</key>
+	<string>[fastlane spaceauth -u ljy080829@gmail.com 生成]</string>
 	</dict>
   </dict>
 </plist>
