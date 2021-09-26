@@ -1,0 +1,14 @@
+version: "3"
+services:
+  rsshub:
+    image: morrisjobke/webdav
+    ports:
+      - "8888:80"
+    volumes:
+      - "/root/docker/webdav:/var/webdav"
+    privileged: true
+    environment:
+      - USERNAME:${ominifocus_username}
+      - PASSWORD:${ominifocus_password}
+    deploy:
+      replicas: 1

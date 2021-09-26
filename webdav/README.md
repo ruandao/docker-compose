@@ -1,0 +1,4 @@
+ominifocus 服务的远程存储层
+需要在服务器上 .bashrc 中配置下
+ominifocus_username
+ominifocus_password
