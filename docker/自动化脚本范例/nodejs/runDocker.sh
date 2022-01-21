@@ -1,5 +1,5 @@
 #!/bin/sh
-
+set -e  # exit on error
 if [ -n "$(git status --porcelain)" ]; then
   echo "文件被修改，请先清空变化";
   exit 1;
