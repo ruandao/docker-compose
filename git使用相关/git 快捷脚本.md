@@ -15,3 +15,21 @@
     else
       echo "no changes";
     fi
+
+
+# git 版本锚定
+
+    dtimeStamp=`git show -s --format=%at`
+    if [[ `uname` == 'Darwin' ]]; then
+      echo "Mac OS"
+      d=`date -r${dtimeStamp} "+%Y-%m-%d_%H_%M_%S"`
+    fi
+
+    if [[ `uname` == 'Linux' ]]; then
+      d=`date -d @${dtimeStamp} "+%Y-%m-%d_%H_%M_%S"`
+      echo "Linux"
+    fi
+
+    hash=`git rev-parse --short HEAD`
+    imgName=qjz:${d}_${hash}
+    echo "容器名为: $imgName"
