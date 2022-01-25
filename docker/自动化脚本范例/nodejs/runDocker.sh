@@ -21,8 +21,9 @@ if [[ `uname` == 'Linux' ]]; then
     echo "Linux"
 fi
 
+branch=`git rev-parse --abbrev-ref HEAD`
 hash=`git rev-parse --short HEAD`
-imgName=qjz:${d}_${hash}
+imgName=qjz:${branch}_${d}_${hash}
 echo "容器名为: $imgName"
 
 # 生成镜像
