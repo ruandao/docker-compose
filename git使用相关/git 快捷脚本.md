@@ -40,6 +40,6 @@
     echo "容器名为: $imgName"
 
     # 支持自动推送部署的时间截到远端
-    dt=`date +test_%Y_%m_%d_%H_%M_%S`
+    dt=`date +test/_%Y_%m_%d_%H_%M_%S`
     git tag ${dt}
     git push origin ${dt}
