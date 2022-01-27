@@ -1,9 +1,13 @@
+# 获取当前日期，并且打标签，推送到远端
 
-获取当前 git 仓库的 hash
+  dt=`date +test_%Y_%m_%d_%H_%M_%S`
+  git tag ${dt}
+  git push origin ${dt}
+# 获取当前 git 仓库的 hash
 
     git rev-parse --short HEAD
 
-获取提交日期
+# 获取提交日期
 
     git show -s --format=%cd --date=format:'%Y-%m-%d_%H:%M:%S'
 
@@ -34,3 +38,8 @@
     hash=`git rev-parse --short HEAD`
     imgName=qjz:${branch}_${d}_${hash}
     echo "容器名为: $imgName"
+
+    # 支持自动推送部署的时间截到远端
+    dt=`date +test_%Y_%m_%d_%H_%M_%S`
+    git tag ${dt}
+    git push origin ${dt}
