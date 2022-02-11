@@ -7,3 +7,6 @@
 [submodule "browser/chrome-window64"]
 	path = browser/chrome-window64
 	url = https://github.com/ruandao/chrome-window64
+[submodule "mq/rocketmq/docker-rocketmq"]
+	path = mq/rocketmq/docker-rocketmq
+	url = git@github.com:foxiswho/docker-rocketmq.git
