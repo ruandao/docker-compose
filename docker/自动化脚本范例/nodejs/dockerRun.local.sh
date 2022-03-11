@@ -31,10 +31,18 @@ echo "容器名为: $imgName"
 # 生成镜像
 docker build -t $imgName .
 
+
 # 清理旧的容器服务
+set +e # 下面这行失败是可以接受的
 docker rm -f ${businessName}
+set -e
 # 运行容器
 echo "如果你想手动查找问题，可以试试以下命令来运行容器"
 echo "docker run -it --rm --name ${businessName} --env-file ../env/${businessName} -p 8088:3000  -v `pwd`/logs:/root/logs $imgName /bin/sh "
-docker run --rm --name ${businessName} --env-file ../env/${businessName} -p 8088:3000 -v `pwd`/logs:/root/logs $imgName
+docker run --rm --name ${businessName} \
+            --env-file ../env/${businessName} \
+            --env aa=bb \
+            -p 8088:3000 \
+            -v `pwd`/logs:/root/logs \
+            $imgName
 
