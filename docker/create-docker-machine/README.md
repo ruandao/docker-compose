@@ -14,7 +14,6 @@
 
 
 
-
 Generic
   Estimated reading time:            2 minutes   
 Create machines using an existing VM/Host with SSH.
