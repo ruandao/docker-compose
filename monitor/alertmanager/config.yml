@@ -1,0 +1,26 @@
+global:
+  # The smarthost and SMTP sender used for mail notifications.  用于邮件通知的智能主机和SMTP发件人。
+  smtp_smarthost: 'smtp.163.com:25'
+  smtp_from: 'xxxxxxxxx@163.com'
+  smtp_auth_username: 'xxxxxxxxxxxxxxx@163.com'
+  smtp_auth_password: 'xxxxxxxxxxxxx'
+  # The auth token for Hipchat.    Hipchat的身份验证令牌。
+
+templates:
+  - '/etc/alertmanager/default-monitor.tmpl'
+
+route:
+  group_by: ['alertname']
+  group_wait: 10s
+  group_interval: 10s
+  repeat_interval: 5m
+  receiver: 'mail'
+
+
+receivers:
+- name: 'mail'
+  email_configs:
+  - to: 'xxxxxxxxxxxxxxxx@163.com, xxxxxxxxxxxxxx@qq.com'
+    send_resolved: true #告警恢复通知
+    html: '{{ template "default-monitor.html" . }}'  #应用那个模板
+    headers: { Subject: "[WARN] 报警邮件" } #邮件主题信息 如果不写headers也可以在模板中定义默认加载email.default.subject这个模板

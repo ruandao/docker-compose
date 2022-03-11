@@ -3,8 +3,8 @@ services:
   prometheus:
     image: prom/prometheus:v2.6.0
     volumes:
-      - /root/docker/monitor/prometheus/data:/prometheus/
-      - /root/docker/monitor/conf/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./prometheus/data:/prometheus/
+      - ./prometheus/conf/prometheus.yml:/etc/prometheus/prometheus.yml
     ports:
       - "9090:9090"
     command: ["--storage.tsdb.retention=45d"]
@@ -20,38 +20,38 @@ services:
 #      placement:
 #        constraints: [node.role == manager]
 
-  redis-ser:
-    image: oliver006/redis_exporter:v0.21.2
-    environment:
-      # 内网IP
-      - REDIS_ADDR=${redis_ser_host}
-      - REDIS_PASSWORD=${redis_ser_pwd}
-    ports:
-      - "9121:9121"
-    deploy:
-      replicas: 1
-#      placement:
-#        constraints: [node.role == manager]
-  redis-test:
-    image: oliver006/redis_exporter:v0.21.2
-    environment:
-      # 内网IP
-      - REDIS_ADDR=${redis_test_host}
-      - REDIS_PASSWORD=${redis_test_pwd}
-    ports:
-      - "9122:9121"
-    deploy:
-      replicas: 1
-#      placement:
-#        constraints: [node.role == manager]
+#   redis-ser:
+#     image: oliver006/redis_exporter:v0.21.2
+#     environment:
+#       # 内网IP
+#       - REDIS_ADDR=${redis_ser_host}
+#       - REDIS_PASSWORD=${redis_ser_pwd}
+#     ports:
+#       - "9121:9121"
+#     deploy:
+#       replicas: 1
+# #      placement:
+# #        constraints: [node.role == manager]
+#   redis-test:
+#     image: oliver006/redis_exporter:v0.21.2
+#     environment:
+#       # 内网IP
+#       - REDIS_ADDR=${redis_test_host}
+#       - REDIS_PASSWORD=${redis_test_pwd}
+#     ports:
+#       - "9122:9121"
+#     deploy:
+#       replicas: 1
+# #      placement:
+# #        constraints: [node.role == manager]
 
   grafana:
     image: grafana/grafana:5.3.2
     ports:
       - "3000:3000"
     volumes:
-      - /root/docker/monitor/grafana/data:/var/lib/grafana
-      - /root/docker/monitor/grafana/logs:/var/log/grafana
+      - ./grafana/data:/var/lib/grafana
+      - ./grafana/logs:/var/log/grafana
     deploy:
       resources:
         limits:
@@ -60,3 +60,19 @@ services:
       replicas: 1
 #      placement:
 #        constraints: [node.role == manager]
+  alertmanager:
+    image: prom/alertmanager:v0.21.0
+    container_name: alertmanager
+    volumes:
+      - ./alertmanager:/etc/alertmanager
+    command:
+      - '--config.file=/etc/alertmanager/config.yml'
+      - '--storage.path=/alertmanager'
+    expose:
+      - 9093
+    networks:
+      - monitor-net
+    labels:
+      org.label-schema.group: "monitoring"
+    hostname: $HOSTNAME
+    restart: always
