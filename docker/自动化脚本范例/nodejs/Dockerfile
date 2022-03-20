@@ -7,6 +7,8 @@ ENV TZ="Asia/Shanghai"
 # Create app directory
 WORKDIR /usr/src/app
 
+RUN npm install -g cnpm --registry=https://registry.npm.taobao.org
+
 COPY cache-package.json ./package.json
 COPY cache-package-lock.json ./package-lock.json
 RUN cnpm install

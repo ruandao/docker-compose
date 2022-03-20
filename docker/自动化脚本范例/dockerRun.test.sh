@@ -30,7 +30,9 @@ echo "容器名为: $imgName"
 docker build -t $imgName .
 
 # 清理旧的容器服务
+set +e
 docker rm -f ${businessName}
+set -e
 # 运行容器
 
 
