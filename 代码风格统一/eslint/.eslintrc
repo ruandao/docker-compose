@@ -1,0 +1,16 @@
+{
+  "plugins": ["jest", "prettier"],
+  "parser": "@babel/eslint-parser",
+  "extends": ["eslint-config-egg", "prettier"],
+  "env": {
+    "jest/globals": true
+  },
+  "rules": {
+    "prettier/prettier": "error",
+    "space-before-function-paren": [0, "always"],
+    "no-case-declarations": "off",
+    "array-bracket-spacing": "off",
+    "no-unused-vars": "off",
+    "quotes": ["error", "double", { "allowTemplateLiterals": true }]
+  }
+}

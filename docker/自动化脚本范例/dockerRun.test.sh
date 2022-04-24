@@ -38,6 +38,7 @@ set -e
 
 docker run -dit --name ${businessName} \
                 --hostname ${businessName} \
+                --add-host=host.docker.internal:host-gateway \
                 --env-file ../env/${businessName} \
                 -v /data/dockerBuilder/${businessName}/logs:/root/logs \
                 -p 8088:3000 \

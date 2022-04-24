@@ -1,0 +1,12 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+set -e -v
+
+npx tsc -b
+# 自动化修复js代码
+npx eslint --fix **.js
+npx lint-staged --allow-empty 
+# 运行单元测试，确保改动不会影响到之前的代码
+npx jest
+# 提交前自动格式化所有代码
+npx prettier --write .
