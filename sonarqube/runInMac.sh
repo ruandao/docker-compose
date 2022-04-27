@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 mkdir -p /Users/cpu/dev/docker/sonarqube/sonarqube/conf
 mkdir -p /Users/cpu/dev/docker/sonarqube/sonarqube/data

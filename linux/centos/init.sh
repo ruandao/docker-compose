@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # 1 关闭防火墙
 sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
 systemctl stop firewalld.service && systemctl disable firewalld.service

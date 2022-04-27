@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 yum install -y wget
 cd /etc/yum.repos.d/

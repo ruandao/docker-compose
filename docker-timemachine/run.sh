@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 #https://hub.docker.com/r/odarriba/timemachine/
 docker run \

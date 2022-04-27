@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 pids=`ps -ef | grep 1234 | grep ssh | grep -v grep|awk '{print $2}'`
 if [ -z "$pids" ];then

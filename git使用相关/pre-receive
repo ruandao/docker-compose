@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # An example hook script to make use of push options.
 # The example simply echoes all push options that start with 'echoback='

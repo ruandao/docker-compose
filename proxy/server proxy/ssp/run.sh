@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 if [ $# -lt 2 ];then
     echo "usage: $0 serverName my_ss_password"

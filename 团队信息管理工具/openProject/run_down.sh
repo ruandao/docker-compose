@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 set -e -v
 echo "参考网址： https://www.openproject.org/docs/installation-and-operations/installation/docker/"
 
